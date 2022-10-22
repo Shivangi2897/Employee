@@ -1,34 +1,36 @@
 package com.example.Employee;
 
+import com.example.Employee.Employee.Employee;
+import com.example.Employee.Employee.EmployeeType;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeManagerTest {
 private EmployeeManager employeeManager=new EmployeeManager();
     @Test
     void shouldGetPayrollOfContractorEmployee() {
-        Employee employee=new Contractor("Abc",1,EmployeeType.Contractor);
-        employeeManager.getEmployeeSalary(employee);
+        Employee employee=new Employee("Abc", 1, EmployeeType.Contractor);
 
-        assertEquals(employee.payroll(employee,employee.getEmployeeType()),9L);
+        long employeeSalary = employeeManager.getEmployeeSalary(employee);
+
+        assertEquals(employeeSalary,9L);
     }
     @Test
     void shouldGetPayrollOfPermanentEmployee() {
-        Employee employee=new Permanent("Ab",2,EmployeeType.Permanent);
-        employeeManager.getEmployeeSalary(employee);
+        Employee employee=new Employee("Abc", 1, EmployeeType.Permanent);
 
-        assertEquals(employee.payroll(employee,employee.getEmployeeType()),10L);
+        long employeeSalary = employeeManager.getEmployeeSalary(employee);
+
+        assertEquals(employeeSalary,10L);
     }
 
     @Test
     void shouldConvertEmployeeTypeToPermanent() {
-        Employee employee=new Contractor("Abc",1,EmployeeType.Contractor);
-        employeeManager.covertEmployeeTypeToPermanent(employee);
+        Employee employee=new Employee("Abc", 1, EmployeeType.Contractor);
 
-        System.out.println(employee.getClass());
-        System.out.println(employee.getEmployeeType());
+        long salaryAfterConvertingToPermanent = employeeManager.covertEmployeeTypeToPermanent(employee);
 
-        assertEquals(employee.payroll(employee,EmployeeType.Permanent),10L);
+        assertEquals(salaryAfterConvertingToPermanent,10L);
+        assertEquals(employee.getEmployeeType(),EmployeeType.Permanent);
     }
 }

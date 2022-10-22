@@ -1,4 +1,4 @@
-package com.example.Employee;
+package com.example.Employee.Employee;
 
 public enum EmployeeType {
     Permanent,
