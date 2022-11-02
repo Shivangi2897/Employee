@@ -1,42 +1,47 @@
 package com.example.Employee;
 
+import com.example.Employee.BenefitsOffered.CabService;
+import com.example.Employee.BenefitsOffered.EmployeeBenefits;
+import com.example.Employee.BenefitsOffered.Gifts;
+import com.example.Employee.BenefitsOffered.HRA;
 import com.example.Employee.Employee.Employee;
-import com.example.Employee.EmployeeRole.Contractor;
-import com.example.Employee.EmployeeRole.EmployeeManager;
-import com.example.Employee.EmployeeRole.Permanent;
+import com.example.Employee.EmployeeRole.*;
 import org.junit.jupiter.api.Test;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeManagerTest {
-private EmployeeManager employeeManager=new EmployeeManager();
     @Test
-    void shouldGetPayrollOfContractorEmployee() {
-        Employee employee=new Employee("Abc", 1, new Contractor());
+    void shouldGetPayrollAndBenefitsOfContractorEmployee() {
+        List<EmployeeBenefits> employeeBenefits =Arrays.asList(new Gifts(), new HRA());
+        Employee employee=new Employee("Abc", 1, new Contractor(),employeeBenefits);
 
-        //long employeeSalary = employeeManager.getEmployeeSalary(employee);
-        
         long employeeSalary =employee.salary();
 
+        assertEquals(employee.benefits().size(),2);
         assertEquals(employeeSalary,9L);
     }
     @Test
-    void shouldGetPayrollOfPermanentEmployee() {
-        Employee employee=new Employee("Abc", 1,new Permanent());
+    void shouldGetPayrollAndBenefitsOfPermanentEmployee() {
+        List<EmployeeBenefits> employeeBenefits =Arrays.asList(new Gifts(), new CabService(),new HRA());
+        Employee employee=new Employee("Abc", 1, new Permanent(),employeeBenefits);
 
         long employeeSalary =employee.salary();
 
+        assertEquals(employee.benefits().size(),3);
         assertEquals(employeeSalary,10L);
     }
 
-//    @Test
-//    void shouldConvertEmployeeTypeToPermanent() {
-//        Employee employee=new Employee("Abc", 1,new Contractor());
-//        long employeeSalary = employeeManager.getEmployeeSalary(employee);
-//        long salaryAfterConvertingToPermanent = employeeManager.covertEmployeeTypeToPermanent(employee);
-//
-//        assertNotEquals(employeeSalary,salaryAfterConvertingToPermanent);
-//        assertEquals(salaryAfterConvertingToPermanent,10L);
-//        assertEquals(employee.getEmployeeType(),EmployeeType.Permanent);
-//    }
+    @Test
+    void shouldGetPayrollAndBenefitsOfInternEmployee() {
+        List<EmployeeBenefits> employeeBenefits =Arrays.asList(new Gifts(), new CabService());
+        Employee employee=new Employee("Abc", 1, new Intern(),employeeBenefits);
+
+        long employeeSalary =employee.salary();
+
+        assertEquals(employee.benefits().size(),2);
+        assertEquals(employeeSalary,8L);
+    }
 }

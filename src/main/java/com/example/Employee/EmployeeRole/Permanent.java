@@ -1,12 +1,20 @@
 package com.example.Employee.EmployeeRole;
 
-import javax.validation.constraints.PositiveOrZero;
+import com.example.Employee.BenefitsOffered.EmployeeBenefits;
 
-public class Permanent extends PayRollDecider {
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Permanent extends PayRollCalculator {
 
     @Override
-    public long payroll() {
+    public long calculatePayroll() {
         return 10L;
+    }
+
+    @Override
+    public List<String> calculateEmployeeBenefits(List<EmployeeBenefits> employeeBenefits) {
+        return employeeBenefits.stream().map(benefit->benefit.policy()).collect(Collectors.toList());
     }
 
 }

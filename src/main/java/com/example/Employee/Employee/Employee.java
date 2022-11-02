@@ -1,11 +1,13 @@
 package com.example.Employee.Employee;
 
-import com.example.Employee.EmployeeRole.PayRollDecider;
+import com.example.Employee.BenefitsOffered.EmployeeBenefits;
+import com.example.Employee.EmployeeRole.PayRollCalculator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,11 +18,14 @@ public  class Employee {
     @Positive
     public long employeeId;
 //    public String DOJ;
-//    public long hra;
-//    //public EmployeeType employeeType;
-    public PayRollDecider payRollDecider;
+
+    public PayRollCalculator payRollCalculator;
+    public  List<EmployeeBenefits> employeeBenefits;
     public long salary(){
-        return payRollDecider.payroll();
+        return payRollCalculator.calculatePayroll();
+    }
+    public List<String> benefits(){
+        return payRollCalculator.calculateEmployeeBenefits(employeeBenefits);
     }
 }
 //salary method

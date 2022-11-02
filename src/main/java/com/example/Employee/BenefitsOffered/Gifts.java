@@ -1,4 +1,4 @@
-package com.example.Employee.EmployeeRole;
+package com.example.Employee.BenefitsOffered;
 
 public class Gifts extends EmployeeBenefits {
     @Override
