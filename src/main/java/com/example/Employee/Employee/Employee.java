@@ -25,7 +25,7 @@ public  class Employee {
         return payRollCalculator.calculatePayroll();
     }
     public List<String> benefits(){
-        return payRollCalculator.calculateEmployeeBenefits(employeeBenefits);
+        return payRollCalculator.calculateEmployeeBenefit(employeeBenefits);
     }
 }
 //salary method

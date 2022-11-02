@@ -12,9 +12,9 @@ public class Intern extends PayRollCalculator {
         return 8L;
     }
 
-    @Override
-    public List<String> calculateEmployeeBenefits(List<EmployeeBenefits> employeeBenefits) {
-        return employeeBenefits.stream().map(benefit->benefit.policy()).collect(Collectors.toList());
-    }
+//    @Override
+//    public List<String> calculateEmployeeBenefits(List<EmployeeBenefits> employeeBenefits) {
+//        return employeeBenefits.stream().map(benefit->benefit.policy()).collect(Collectors.toList());
+//    }
 
 }

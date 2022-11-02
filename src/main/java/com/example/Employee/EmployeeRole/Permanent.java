@@ -12,9 +12,9 @@ public class Permanent extends PayRollCalculator {
         return 10L;
     }
 
-    @Override
-    public List<String> calculateEmployeeBenefits(List<EmployeeBenefits> employeeBenefits) {
-        return employeeBenefits.stream().map(benefit->benefit.policy()).collect(Collectors.toList());
-    }
+//    @Override
+//    public List<String> calculateEmployeeBenefits(List<EmployeeBenefits> employeeBenefits) {
+//        return employeeBenefits.stream().map(benefit->benefit.policy()).collect(Collectors.toList());
+//    }
 
 }

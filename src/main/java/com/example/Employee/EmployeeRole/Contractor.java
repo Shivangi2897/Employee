@@ -11,8 +11,8 @@ public class Contractor extends PayRollCalculator{
             return 9L;
         }
 
-    @Override
-    public List<String> calculateEmployeeBenefits(List<EmployeeBenefits> employeeBenefits) {
-        return employeeBenefits.stream().map(benefit->benefit.policy()).collect(Collectors.toList());
-    }
+//    @Override
+//    public List<String> calculateEmployeeBenefits(List<EmployeeBenefits> employeeBenefits) {
+//        return employeeBenefits.stream().map(benefit->benefit.policy()).collect(Collectors.toList());
+//    }
 }
