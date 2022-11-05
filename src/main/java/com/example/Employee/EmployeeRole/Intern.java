@@ -1,9 +1,11 @@
 package com.example.Employee.EmployeeRole;
 
-public class  Contractor extends PayRollCalculator {
+public class Intern extends PayRollCalculator {
 
     @Override
     public long calculatePayroll() {
-            return 9l;
+        return 8L;
     }
+
+
 }

@@ -1,36 +1,45 @@
 package com.example.Employee;
 
 import com.example.Employee.Employee.Employee;
-import com.example.Employee.Employee.EmployeeType;
+import com.example.Employee.EmployeeAbstractFactory.ContractorBenefits;
+import com.example.Employee.EmployeeAbstractFactory.InternBenefits;
+import com.example.Employee.EmployeeAbstractFactory.PermanentBenefits;
+import com.example.Employee.EmployeeRole.Contractor;
+import com.example.Employee.EmployeeRole.Intern;
+import com.example.Employee.EmployeeRole.Permanent;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmployeeManagerTest {
-private EmployeeManager employeeManager=new EmployeeManager();
+
     @Test
     void shouldGetPayrollOfContractorEmployee() {
-        Employee employee=new Employee("Abc", 1, EmployeeType.Contractor);
+        Employee employee=new Employee("Abc", 1,new Contractor(),new ContractorBenefits());
 
-        long employeeSalary = employeeManager.getEmployeeSalary(employee);
+        long employeeSalary = employee.salary();
+        employee.benefits();
 
         assertEquals(employeeSalary,9L);
     }
     @Test
     void shouldGetPayrollOfPermanentEmployee() {
-        Employee employee=new Employee("Abc", 1, EmployeeType.Permanent);
+        Employee employee=new Employee("Abc", 1,new Permanent(), new PermanentBenefits());
 
-        long employeeSalary = employeeManager.getEmployeeSalary(employee);
+        long employeeSalary = employee.salary();
+        employee.benefits();
 
         assertEquals(employeeSalary,10L);
     }
 
     @Test
-    void shouldConvertEmployeeTypeToPermanent() {
-        Employee employee=new Employee("Abc", 1, EmployeeType.Contractor);
+    void shouldGetPayrollOfInternEmployee() {
+        Employee employee=new Employee("Abc", 1,new Intern(),new InternBenefits());
 
-        long salaryAfterConvertingToPermanent = employeeManager.covertEmployeeTypeToPermanent(employee);
+        long employeeSalary = employee.salary();
+        employee.benefits();
 
-        assertEquals(salaryAfterConvertingToPermanent,10L);
-        assertEquals(employee.getEmployeeType(),EmployeeType.Permanent);
+        assertEquals(employeeSalary,8L);
+
     }
 }

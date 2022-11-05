@@ -1,10 +1,11 @@
 package com.example.Employee.EmployeeRole;
 
-public class Permanent extends PayRollDecider {
+public class Permanent extends PayRollCalculator {
 
     @Override
-    public long payroll() {
+    public long calculatePayroll() {
         return 10L;
     }
+
 
 }
